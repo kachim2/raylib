@@ -526,7 +526,10 @@ typedef enum {
     FLAG_WINDOW_TRANSPARENT = 0x00000010,   // Set to allow transparent framebuffer
     FLAG_WINDOW_HIGHDPI     = 0x00002000,   // Set to support HighDPI
     FLAG_WINDOW_MOUSE_PASSTHROUGH = 0x00004000, // Set to support mouse passthrough, only supported when FLAG_WINDOW_UNDECORATED
-    FLAG_MSAA_4X_HINT       = 0x00000020,   // Set to try enabling MSAA 4X
+    FLAG_MSAA_2X_HINT       = 0x10000000,   // Set to try enabling MSAA 4X
+    FLAG_MSAA_4X_HINT       = 0x20000000,   // Set to try enabling MSAA 4X
+    FLAG_MSAA_8X_HINT       = 0x40000000,   // Set to try enabling MSAA 4X
+    FLAG_MSAA_16X_HINT      = 0x80000020,  // Set to try enabling MSAA 4X
     FLAG_INTERLACED_HINT    = 0x00010000    // Set to try enabling interlaced video format (for V3D)
 } ConfigFlags;
 
