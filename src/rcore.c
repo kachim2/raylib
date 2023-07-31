@@ -4159,12 +4159,30 @@ static bool InitGraphicsDevice(int width, int height)
     if ((CORE.Window.flags & FLAG_WINDOW_MOUSE_PASSTHROUGH) > 0) glfwWindowHint(GLFW_MOUSE_PASSTHROUGH, GLFW_TRUE);
     else glfwWindowHint(GLFW_MOUSE_PASSTHROUGH, GLFW_FALSE);
 #endif
-
+    if (CORE.Window.flags & FLAG_MSAA_2X_HINT)
+    {
+        // NOTE: MSAA is only enabled for main framebuffer, not user-created FBOs
+        TRACELOG(LOG_INFO, "DISPLAY: Trying to enable MSAA x2");
+        glfwWindowHint(GLFW_SAMPLES, 2);   // Tries to enable multisampling x4 (MSAA), default is 0
+    }
     if (CORE.Window.flags & FLAG_MSAA_4X_HINT)
     {
         // NOTE: MSAA is only enabled for main framebuffer, not user-created FBOs
         TRACELOG(LOG_INFO, "DISPLAY: Trying to enable MSAA x4");
         glfwWindowHint(GLFW_SAMPLES, 4);   // Tries to enable multisampling x4 (MSAA), default is 0
+    }
+
+    if (CORE.Window.flags & FLAG_MSAA_8X_HINT)
+    {
+        // NOTE: MSAA is only enabled for main framebuffer, not user-created FBOs
+        TRACELOG(LOG_INFO, "DISPLAY: Trying to enable MSAA x8");
+        glfwWindowHint(GLFW_SAMPLES, 8);   // Tries to enable multisampling x4 (MSAA), default is 0
+    }
+    if (CORE.Window.flags & FLAG_MSAA_16X_HINT)
+    {
+        // NOTE: MSAA is only enabled for main framebuffer, not user-created FBOs
+        TRACELOG(LOG_INFO, "DISPLAY: Trying to enable MSAA x16");
+        glfwWindowHint(GLFW_SAMPLES, 16);   // Tries to enable multisampling x4 (MSAA), default is 0
     }
 
     // NOTE: When asking for an OpenGL context version, most drivers provide the highest supported version
